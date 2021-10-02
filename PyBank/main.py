@@ -1,7 +1,7 @@
 import os
 import csv
-
-with open("PyBank/Resources/budget_data.csv", 'r', newline='') as csvfile:
+filename = os.path.join("Pybank", "Resources", "budget_data.csv")
+with open(filename, 'r', newline='') as csvfile:
 
     #variables needed
     totalmonths=0
@@ -49,19 +49,18 @@ with open("PyBank/Resources/budget_data.csv", 'r', newline='') as csvfile:
     greatestmonth = months[increaseindex+1]
     lowestmonth = months[decreaseindex+1]
 
-with open("Pybank/output.txt", 'w', newline='') as txtfile:
+print("Financial Analysis")
+print("-----------------")
+print(f"Total Months: {totalmonths}")
+print(f"Total: {netprofit}")
+print(f"Average Change: ${averagechange}")
+print(f"Greatest Increase in Profits: {greatestmonth} (${greatestincrease})")
+print(f"Greatest Decrease in Profits: {lowestmonth} (${greatestdecrease})")
+
+with open("Pybank/Analysis/output.txt", 'w', newline='') as txtfile:
     txtfile.write("Financial Analysis \n")
-    txtfile.write("Total Months: ")
-    txtfile.write(str(totalmonths))
-    txtfile.write("\nAverage Change: $")
-    txtfile.write(str(averagechange))
-    txtfile.write("\nGreatest Increase in Profits: ")
-    txtfile.write(greatestmonth)
-    txtfile.write(" ($")
-    txtfile.write(str(greatestincrease))
-    txtfile.write(") \n")
-    txtfile.write("Greatest Decrease in Profits: ")
-    txtfile.write(lowestmonth)
-    txtfile.write(" ($")
-    txtfile.write(str(greatestdecrease))
-    txtfile.write(")")
+    txtfile.write("-----------------\n")
+    txtfile.write(f"Total: ${netprofit}\n")
+    txtfile.write(f"Average Change: ${averagechange}\n")
+    txtfile.write(f"Greatest Increase in Profits: {greatestmonth} ({greatestincrease})\n")
+    txtfile.write(f"Greatest Decrease in Profits: {lowestmonth} (${greatestdecrease})")
